@@ -1,0 +1,50 @@
+-inherit CircleApp:templates/_base.html
+
+-def page_title()
+  ${u'Selamat Datang di Simple Admin Page'}
+
+.row
+  .col-sm-12.col-xs-12
+    .coming-soon-page
+      h2.red.title
+        span ${u'Selamat Datang di Simple Admin Page'}
+.row
+  .col-sm-12.col-xs-12
+    <%self.widgets:panel>
+      h2.red.title
+        span ${u'Tabel Pengguna'}
+      table#table.table.table-striped.table-bordered width="100%" cellspacing="0"
+        thead
+            tr
+              th: ID Pengguna
+              th: Email Pengguna
+              th: Akun Pengguna
+              th: Perintah
+
+    </%self.widgets:panel>
+
+-block js
+    script type="application/javascript"
+        $(function(){
+            $('#table').DataTable({
+                "ajax": "${request.route_url('pengguna_list')}",
+                "columns": [
+                    { "data": "pid" },
+                    { "data": "email" },
+                    { "data": "username" },
+                    { "data": null },
+                ],
+                "columnDefs": [{
+                    "targets": -1,
+                    "data": null,
+                    "render": function(data, type, full, meta) {
+                        return  '<a href="/profile/'+ data['uid'] +'">' +
+                                'View'+
+                                '</a> &nbsp&nbsp'+
+                                '<a href=view.html?id='+data['uid']+'>' +
+                                'Edit'
+                                '</a>'
+                    }
+                }]
+            });
+        });

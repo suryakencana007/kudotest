@@ -1,0 +1,80 @@
+.header {
+    margin-bottom: 10.5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15)
+}
+.header .box {
+    height: 24px;
+    width: 24px
+}
+.header img.logo {
+    background: #FFF;
+    width: 32px;
+    height: 32px;
+    margin: 4px 0 2px 0
+}
+.header .ui-flex {
+    display: flex;
+    justify-content: space-between
+}
+.pad-nav {
+    margin: 6px 0 4px 0
+}
+.left {
+    float: left
+}
+.f-west,
+.f-east {
+    display: flex
+}
+.f-west {
+    flex: 1 1 auto;
+    justify-content: flex-start
+}
+.f-east {
+    flex: 0 0 auto;
+    justify-content: flex-end
+}
+.inline-box {
+    border-radius: 2px;
+    display: inline;
+    margin: 2px 6px 2px -8px;
+    vertical-align: inherit
+}
+.nav-a {
+    background-color: transparent;
+    color: inherit;
+    display: inline-block;
+    font-size: 12px;
+    height: 27px;
+    line-height: 28px;
+    padding: 0 10px 1px;
+    position: relative;
+    text-decoration: none;
+    vertical-align: top;
+    white-space: nowrap
+}
+.nav-a:hover,
+.nav-a:active,
+.nav-a:focus {
+    background: rgba(0, 0, 0, 0.1);
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+    z-index: 1
+}
+.logo-text {
+    margin-bottom: 118px;
+    margin-top: 40px
+}
+.logo-text.md {
+    width: 40%;
+    height: auto
+}
+.logo-text.sm {
+    width: 15%;
+    height: auto
+}
+.logo-text.lg {
+    width: 100%;
+    height: auto
+}

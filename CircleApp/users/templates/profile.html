@@ -1,0 +1,20 @@
+-inherit file="CircleApp:templates/_base.html"
+
+-def page_title()
+  ${title or ''}
+
+
+<%self.widgets:panel>
+    ${baka.ui.tags.form(
+        action or request.url,
+        class_="_ajax %s" % ('readonly' if readonly else ''),
+        autocomplete="off")}
+
+        <%self.widgets:textfield value="${ display_name or None }" name="display_name" label="${u'Nama Profile'}" placeholder="${u'Nama profile'}" />
+        <%self.widgets:textfield value="${ first_name or None }" name="first_name" label="${u'Nama Depan'}" placeholder="${u'Nama depan'}" />
+        <%self.widgets:textfield value="${ last_name or None }" name="last_name" label="${u'Nama Belakang'}" placeholder="${u'Nama belakang'}" />
+
+    ${baka.ui.tags.submit('login', u'Masuk', class_="btn btn-primary") if not readonly else ''}
+    ${baka.ui.tags.link_to(u'Lupa Kunci', '/', class_="btn") if not readonly else ''}
+    ${baka.ui.tags.end_form()}
+</%self.widgets:panel>

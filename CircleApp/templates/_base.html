@@ -1,0 +1,51 @@
+-namespace name="widgets" file="CircleApp:templates/_components.html" inheritable="True"
+
+doctype 5
+html lang="${request.locale_name}"
+  head
+    meta charset="utf-8"
+    title
+      == "Circle App"
+      == self.title()
+
+    meta name="viewport" content="width=device-width"
+    meta name="description" content=""
+    meta name="author" content="nanang suryadi"
+
+    meta name="keywords" content="python, pyramid, django, flask, baka, python id"
+
+    meta property="og:site_name" content="Circle App"
+    meta property="og:url" content="http://circle-app.id/"
+    meta property="og:type" content="website"
+
+    link rel="icon" type="image/ico" href="/static/favicon.ico"
+
+    -for url in request.web_env['css-vendor'].urls():
+      ${baka.ui.tags.stylesheet_link(static(url))}
+
+    style rel="stylesheet/css"
+      body {
+        font-family: Arial,Verdana,Tahoma;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.429;
+        color: rgba(0,0,0,0.87);
+        background-color: #ECEFF1;
+      }
+
+    -block css
+
+  body
+    -include _navigation.html
+
+    .container
+      ${self.body()}
+
+
+    -for url in request.web_env['js-vendor'].urls():
+      ${baka.ui.tags.javascript_link(static(url))}
+
+    -block js
+
+-def title()
+  = ''

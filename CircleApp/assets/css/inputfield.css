@@ -1,0 +1,371 @@
+.inputfield {
+    display: block;
+    padding-top: 21px;
+    margin-bottom: 20px;
+    position: relative
+}
+.inputfield>span>label {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 21px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+.inputfield>textarea {
+    padding-top: 5px
+}
+.inputfield>input,
+.inputfield>textarea {
+    display: block
+}
+.inputfield>input:focus ~ span>label,
+.inputfield>textarea:focus ~ span>label {
+    color: #3776AB
+}
+.inputfield>.error-field {
+    display: none;
+    position: absolute;
+    right: 0;
+    color: rgba(0, 0, 0, 0.54)
+}
+.inputfield>input,
+.inputfield>textarea {
+    display: block;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 14px;
+    white-space: nowrap;
+    line-height: 20px;
+    background-image: none
+}
+.inputfield>input::-moz-placeholder,
+.inputfield>textarea::-moz-placeholder {
+    color: rgba(0, 0, 0, 0.26);
+    opacity: 1
+}
+.inputfield>input:-ms-input-placeholder,
+.inputfield>textarea:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.26)
+}
+.inputfield>input::-webkit-input-placeholder,
+.inputfield>textarea::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.26)
+}
+.inputfield>input:focus,
+.inputfield>textarea:focus {
+    border-color: #3776AB;
+    border-width: 1px;
+    border-radius: 2px
+}
+.inputfield>input:disabled,
+.inputfield>input:read-only,
+.inputfield>textarea:disabled,
+.inputfield>textarea:read-only {
+    cursor: not-allowed;
+    background-color: transparent;
+    opacity: 1
+}
+.inputfield>input::placeholder,
+.inputfield>textarea::placeholder {
+    color: rgba(0, 0, 0, 0.26);
+    opacity: 1
+}
+.inputfield>input {
+    height: 45px
+}
+.inputfield>textarea {
+    min-height: 64px
+}
+.inputfield>textarea[rows]:not([rows="2"]):focus {
+    margin-bottom: -1px
+}
+.inputfield>input:invalid:not(:focus):not(:required),
+.inputfield>input:invalid:not(:focus):required.is-not-empty,
+.inputfield>input:invalid:not(:focus):required.is-empty.is-dirty,
+.inputfield>input:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty),
+.inputfield>input:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty),
+.inputfield>textarea:invalid:not(:focus):not(:required),
+.inputfield>textarea:invalid:not(:focus):required.is-not-empty,
+.inputfield>textarea:invalid:not(:focus):required.is-empty.is-dirty,
+.inputfield>textarea:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty),
+.inputfield>textarea:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty),
+.inputfield>input:not(:focus)._invalid:not(:required),
+.inputfield>input:not(:focus)._invalid:required.is-not-empty,
+.inputfield>input:not(:focus)._invalid:required.is-empty.is-dirty,
+.inputfield>input:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty),
+.inputfield>input:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty),
+.inputfield>textarea:not(:focus)._invalid:not(:required),
+.inputfield>textarea:not(:focus)._invalid:required.is-not-empty,
+.inputfield>textarea:not(:focus)._invalid:required.is-empty.is-dirty,
+.inputfield>textarea:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty),
+.inputfield>textarea:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty) {
+    border-color: #F44336;
+    border-width: 1px;
+    border-radius: 2px
+}
+.inputfield>input:invalid:not(:focus):not(:required) ~ span>label,
+.inputfield>input:invalid:not(:focus):not(:required) ~ .error-field,
+.inputfield>input:invalid:not(:focus):required.is-not-empty ~ span>label,
+.inputfield>input:invalid:not(:focus):required.is-not-empty ~ .error-field,
+.inputfield>input:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>input:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>input:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>input:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>textarea:invalid:not(:focus):not(:required) ~ span>label,
+.inputfield>textarea:invalid:not(:focus):not(:required) ~ .error-field,
+.inputfield>textarea:invalid:not(:focus):required.is-not-empty ~ span>label,
+.inputfield>textarea:invalid:not(:focus):required.is-not-empty ~ .error-field,
+.inputfield>textarea:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>textarea:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>textarea:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>textarea:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>input:not(:focus)._invalid:not(:required) ~ span>label,
+.inputfield>input:not(:focus)._invalid:not(:required) ~ .error-field,
+.inputfield>input:not(:focus)._invalid:required.is-not-empty ~ span>label,
+.inputfield>input:not(:focus)._invalid:required.is-not-empty ~ .error-field,
+.inputfield>input:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>input:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>input:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>input:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>textarea:not(:focus)._invalid:not(:required) ~ span>label,
+.inputfield>textarea:not(:focus)._invalid:not(:required) ~ .error-field,
+.inputfield>textarea:not(:focus)._invalid:required.is-not-empty ~ span>label,
+.inputfield>textarea:not(:focus)._invalid:required.is-not-empty ~ .error-field,
+.inputfield>textarea:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>textarea:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>textarea:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>textarea:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty) ~ .error-field {
+    display: block;
+    color: #F44336
+}
+.inputfield:not(.inputfield--float-label)>input:invalid:not(:focus):required.is-empty.is-dirty ~ span>label,
+.inputfield:not(.inputfield--float-label)>input:invalid:not(:focus) ~ .error-field,
+.inputfield:not(.inputfield--float-label)>textarea:invalid:not(:focus):required.is-empty.is-dirty ~ span>label,
+.inputfield:not(.inputfield--float-label)>textarea:invalid:not(:focus) ~ .error-field,
+.inputfield:not(.inputfield--float-label)>input:not(:focus)._invalid:required.is-empty.is-dirty ~ span>label,
+.inputfield:not(.inputfield--float-label)>input:not(:focus)._invalid ~ .error-field,
+.inputfield:not(.inputfield--float-label)>textarea:not(:focus)._invalid:required.is-empty.is-dirty ~ span>label,
+.inputfield:not(.inputfield--float-label)>textarea:not(:focus)._invalid ~ .error-field {
+    display: block;
+    color: #F44336
+}
+.inputfield._ok::before {
+    position: absolute;
+    right: 5px;
+    top: 2px;
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    content: "\f000";
+    color: #3776AB;
+    animation: fadein .5s
+}
+.typo-note {
+    font-size: 10px;
+    font-weight: 400
+}.inputfield {
+    display: block;
+    padding-top: 21px;
+    margin-bottom: 20px;
+    position: relative
+}
+.inputfield>span>label {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 21px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+.inputfield>textarea {
+    padding-top: 5px
+}
+.inputfield>input,
+.inputfield>textarea {
+    display: block
+}
+.inputfield>input:focus ~ span>label,
+.inputfield>textarea:focus ~ span>label {
+    color: #3776AB
+}
+.inputfield>.error-field {
+    display: none;
+    position: absolute;
+    right: 0;
+    color: rgba(0, 0, 0, 0.54)
+}
+.inputfield>input,
+.inputfield>textarea {
+    display: block;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 14px;
+    white-space: nowrap;
+    line-height: 20px;
+    background-image: none
+}
+.inputfield>input::-moz-placeholder,
+.inputfield>textarea::-moz-placeholder {
+    color: rgba(0, 0, 0, 0.26);
+    opacity: 1
+}
+.inputfield>input:-ms-input-placeholder,
+.inputfield>textarea:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.26)
+}
+.inputfield>input::-webkit-input-placeholder,
+.inputfield>textarea::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.26)
+}
+.inputfield>input:focus,
+.inputfield>textarea:focus {
+    border-color: #3776AB;
+    border-width: 1px;
+    border-radius: 2px
+}
+.inputfield>input:disabled,
+.inputfield>input:read-only,
+.inputfield>textarea:disabled,
+.inputfield>textarea:read-only {
+    cursor: not-allowed;
+    background-color: transparent;
+    opacity: 1
+}
+.inputfield>input::placeholder,
+.inputfield>textarea::placeholder {
+    color: rgba(0, 0, 0, 0.26);
+    opacity: 1
+}
+.inputfield>input {
+    height: 45px
+}
+.inputfield>textarea {
+    min-height: 64px
+}
+.inputfield>textarea[rows]:not([rows="2"]):focus {
+    margin-bottom: -1px
+}
+.inputfield>input:invalid:not(:focus):not(:required),
+.inputfield>input:invalid:not(:focus):required.is-not-empty,
+.inputfield>input:invalid:not(:focus):required.is-empty.is-dirty,
+.inputfield>input:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty),
+.inputfield>input:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty),
+.inputfield>textarea:invalid:not(:focus):not(:required),
+.inputfield>textarea:invalid:not(:focus):required.is-not-empty,
+.inputfield>textarea:invalid:not(:focus):required.is-empty.is-dirty,
+.inputfield>textarea:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty),
+.inputfield>textarea:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty),
+.inputfield>input:not(:focus)._invalid:not(:required),
+.inputfield>input:not(:focus)._invalid:required.is-not-empty,
+.inputfield>input:not(:focus)._invalid:required.is-empty.is-dirty,
+.inputfield>input:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty),
+.inputfield>input:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty),
+.inputfield>textarea:not(:focus)._invalid:not(:required),
+.inputfield>textarea:not(:focus)._invalid:required.is-not-empty,
+.inputfield>textarea:not(:focus)._invalid:required.is-empty.is-dirty,
+.inputfield>textarea:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty),
+.inputfield>textarea:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty) {
+    border-color: #F44336;
+    border-width: 1px;
+    border-radius: 2px
+}
+.inputfield>input:invalid:not(:focus):not(:required) ~ span>label,
+.inputfield>input:invalid:not(:focus):not(:required) ~ .error-field,
+.inputfield>input:invalid:not(:focus):required.is-not-empty ~ span>label,
+.inputfield>input:invalid:not(:focus):required.is-not-empty ~ .error-field,
+.inputfield>input:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>input:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>input:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>input:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>textarea:invalid:not(:focus):not(:required) ~ span>label,
+.inputfield>textarea:invalid:not(:focus):not(:required) ~ .error-field,
+.inputfield>textarea:invalid:not(:focus):required.is-not-empty ~ span>label,
+.inputfield>textarea:invalid:not(:focus):required.is-not-empty ~ .error-field,
+.inputfield>textarea:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>textarea:invalid:not(:focus):required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>textarea:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>textarea:invalid:not(:focus):required:not(:empty):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>input:not(:focus)._invalid:not(:required) ~ span>label,
+.inputfield>input:not(:focus)._invalid:not(:required) ~ .error-field,
+.inputfield>input:not(:focus)._invalid:required.is-not-empty ~ span>label,
+.inputfield>input:not(:focus)._invalid:required.is-not-empty ~ .error-field,
+.inputfield>input:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>input:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>input:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>input:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>textarea:not(:focus)._invalid:not(:required) ~ span>label,
+.inputfield>textarea:not(:focus)._invalid:not(:required) ~ .error-field,
+.inputfield>textarea:not(:focus)._invalid:required.is-not-empty ~ span>label,
+.inputfield>textarea:not(:focus)._invalid:required.is-not-empty ~ .error-field,
+.inputfield>textarea:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>textarea:not(:focus)._invalid:required[value]:not([value=""]):not(.is-empty):not(.is-not-empty) ~ .error-field,
+.inputfield>textarea:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty) ~ span>label,
+.inputfield>textarea:not(:focus)._invalid:required:not(:empty):not(.is-empty):not(.is-not-empty) ~ .error-field {
+    display: block;
+    color: #F44336
+}
+.inputfield:not(.inputfield--float-label)>input:invalid:not(:focus):required.is-empty.is-dirty ~ span>label,
+.inputfield:not(.inputfield--float-label)>input:invalid:not(:focus) ~ .error-field,
+.inputfield:not(.inputfield--float-label)>textarea:invalid:not(:focus):required.is-empty.is-dirty ~ span>label,
+.inputfield:not(.inputfield--float-label)>textarea:invalid:not(:focus) ~ .error-field,
+.inputfield:not(.inputfield--float-label)>input:not(:focus)._invalid:required.is-empty.is-dirty ~ span>label,
+.inputfield:not(.inputfield--float-label)>input:not(:focus)._invalid ~ .error-field,
+.inputfield:not(.inputfield--float-label)>textarea:not(:focus)._invalid:required.is-empty.is-dirty ~ span>label,
+.inputfield:not(.inputfield--float-label)>textarea:not(:focus)._invalid ~ .error-field {
+    display: block;
+    color: #F44336
+}
+.inputfield._ok::before {
+    position: absolute;
+    right: 5px;
+    top: 2px;
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    content: "\f000";
+    color: #3776AB;
+    animation: fadein .5s
+}
+.typo-note {
+    font-size: 10px;
+    font-weight: 400
+}

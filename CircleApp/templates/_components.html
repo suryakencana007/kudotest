@@ -1,0 +1,12 @@
+-def textfield(name, label, type='text', placeholder=None, value=None, required=False, error=None)
+  .inputfield
+    / password field type
+    ${getattr(baka.ui.tags, type)(name, value, placeholder=placeholder)}
+    / input name="${name}" type="text" placeholder="${placeholder}" value="${value or ''}"
+    / label: ${label}
+    ${baka.ui.tags.title(label, required, name)}
+    .error-field.typo-note data-name="${name or ''}": span: ${error or 'This field must be required'}
+
+-def panel(styles=None)
+  .panel style="${styles or ''}"
+    ${caller.body()}

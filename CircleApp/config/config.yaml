@@ -1,0 +1,20 @@
+package: CircleApp
+baka:
+  debug_all: True
+  meta:
+    version: 0.1.0
+tenshi:
+  inject: True
+  should_create_all: False
+  should_drop_all: False
+armor:
+  ext: .html
+  config: config # config folder
+  assets: assets # assets folder
+  bundles: assets.yaml # filename assets config
+  url: static
+  debug: False
+  manifest: file
+  cache: False
+  auto_build: True
+  plim: True

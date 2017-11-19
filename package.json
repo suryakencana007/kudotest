@@ -1,0 +1,12 @@
+{
+  "name": "circleapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "nanang suryadi",
+  "license": "BSD",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "uglify-js": "^3.1.9"
+  }
+}

@@ -1,0 +1,4 @@
+baka
+baka-tenshi==1.0.3.dev3
+baka-armor
+colander

@@ -1,0 +1,21 @@
+css-vendor:
+  filters: cssmin
+  depends: '**/*.scss'
+  output: CircleApp:public/vendor.%(version)s.css
+  contents:
+    - ../../node_modules/bootstrap/dist/css/bootstrap.css
+    - css/dataTables.bootstrap.css
+    - css/inputfield.css
+    - css/navigation.css
+    - css/navbar.css
+
+js-vendor:
+  config:
+    UGLIFYJS_BIN: ./node_modules/.bin/uglifyjs
+  filters: uglifyjs
+  output: CircleApp:public/vendor.%(version)s.js
+  contents:
+    - ../../node_modules/jquery/dist/jquery.js
+    - ../../node_modules/bootstrap/dist/js/bootstrap.js
+    - js/jquery.dataTables.js
+    - js/dataTables.bootstrap.js
