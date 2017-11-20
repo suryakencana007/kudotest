@@ -27,7 +27,7 @@
     script type="application/javascript"
         $(function(){
             $('#table').DataTable({
-                "ajax": "${request.route_url('pengguna_list')}",
+                "ajax": "${request.route_url('daftar_pengguna')}",
                 "columns": [
                     { "data": "pid" },
                     { "data": "email" },

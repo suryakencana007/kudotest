@@ -1,5 +1,6 @@
 from baka.log import log
 from baka.response import JSONAPIResponse
+from pyramid.httpexceptions import HTTPFound
 
 from CircleApp.app import app
 from CircleApp.jsonapi import QueryBuilder
@@ -7,77 +8,8 @@ from CircleApp.users.form import UserAddForm
 from CircleApp.utils import MAX_LIMIT, DEFAULT_LIMIT, mapper_alchemy
 
 
-@app.resource(
-    '/users/{uid:.*}',
-    route_name='pengguna_form',
-    renderer='CircleApp:users/templates/register.html')
-class PenggunaForm(object):
-    def __init__(self, request):
-        self._title = 'Pengguna'
-        self.user = request.find_model('pengguna')
-
-
-@PenggunaForm.GET()
-def pengguna_form_get(page, request):
-    data = {}
-    s = request.db
-    user = s.query(page.user).filter_by(
-        uid=request.matchdict.get('uid')).first()
-
-    if user:
-        data = mapper_alchemy(page.user, user)
-
-    return {
-        'title': page._title,
-        'action': request.route_url('pengguna_form', uid=user.uid),
-        **data
-    }
-
-
-@PenggunaForm.POST()
-def pengguna_form_post(page, request):
-    return {
-        'title': page._title,
-        'action': request.route_url('pengguna_form', uid='')
-    }
-
-
-@app.resource(
-    '/users',
-    route_name='pengguna_form_new',
-    renderer='CircleApp:users/templates/register.html')
-class PenggunaFormNew(object):
-    def __init__(self, request):
-        self._title = 'Pengguna'
-        self.user = request.find_model('pengguna')
-
-
-@PenggunaFormNew.GET()
-def pengguna_form_new_get(page, request):
-    return {
-        'title': page._title
-    }
-
-
-@PenggunaFormNew.POST()
-def pengguna_form_new_post(page, request):
-    errors = None
-    form = UserAddForm(request)
-    if form.validate():
-        user = form.submit()
-        request.db.add(user)
-    else:
-        errors = form.errors
-
-    return {
-        'title': page._title,
-        'action': request.route_url('pengguna_form', uid='00008888'),
-        'errors': errors
-    }
-
-
-@app.route('/users/list', route_name='pengguna_list')
-def pengguna_get(request):
+@app.route('/users/list', route_name='daftar_pengguna')
+def daftar_pengguna(request):
     user = request.find_model('pengguna')
     data = {}
     with JSONAPIResponse(request.response) as resp:
@@ -104,21 +36,90 @@ def pengguna_get(request):
 
 
 @app.resource(
+    '/users',
+    route_name='form_pengguna',
+    renderer='CircleApp:users/templates/register.html')
+class FormPengguna(object):
+    def __init__(self, request):
+        self._title = 'Pengguna'
+        self.user = request.find_model('pengguna')
+
+
+@FormPengguna.GET()
+def form_pengguna_baru_get(page, request):
+    return {
+        'title': page._title
+    }
+
+
+@FormPengguna.POST()
+def form_pengguna_baru_post(page, request):
+    form = UserAddForm(request)
+    if form.validate():
+        user = form.submit()
+        request.db.add(user)
+        request.db.flush()
+        log.info(user.id)
+        return HTTPFound(request.route_url('ubah_pengguna', uid=user.uid))
+    else:
+        return {
+            'title': page._title,
+            'error_message': _(u'Please, check errors'),
+            'errors': form.errors
+        }
+
+
+@app.resource(
+    '/users/{uid:.*}',
+    route_name='ubah_pengguna',
+    renderer='CircleApp:users/templates/register.html')
+class UbahPengguna(object):
+    def __init__(self, request):
+        self._title = 'Pengguna'
+        self.user = request.find_model('pengguna')
+
+
+@UbahPengguna.GET()
+def ubah_pengguna_get(page, request):
+    data = {}
+    s = request.db
+    user = s.query(page.user).filter_by(
+        uid=request.matchdict.get('uid')).first()
+
+    if user:
+        data = mapper_alchemy(page.user, user)
+
+    return {
+        'title': page._title,
+        'action': request.route_url('ubah_pengguna', uid=user.uid),
+        **data
+    }
+
+
+@UbahPengguna.POST()
+def ubah_pengguna_post(page, request):
+    return {
+        'title': page._title,
+        'action': request.route_url('ubah_pengguna', uid=user.uid)
+    }
+
+
+@app.resource(
     '/login',
-    route_name='pengguna_login',
+    route_name='login_pengguna',
     renderer='CircleApp:users/templates/login.html')
-class PenggunaLogin(object):
+class LoginPengguna(object):
     def __init__(self, request):
         self._title = 'Login'
         self.user = request.find_model('pengguna')
 
 
-@PenggunaLogin.GET()
+@LoginPengguna.GET()
 def login_get(page, request):
     return { 'title': page._title }
 
 
-@PenggunaLogin.POST()
+@LoginPengguna.POST()
 def login_post(page, request):
     params = request.params
     log.info(params)
