@@ -5,7 +5,7 @@ baka:
     version: 0.1.0
 tenshi:
   inject: True
-  should_create_all: False
+  should_create_all: True
   should_drop_all: False
 armor:
   ext: .html

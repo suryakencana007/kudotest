@@ -64,7 +64,7 @@ def form_pengguna_baru_post(page, request):
     else:
         return {
             'title': page._title,
-            'error_message': _(u'Please, check errors'),
+            'error_message': u'Please, check errors',
             'errors': form.errors
         }
 
@@ -100,7 +100,7 @@ def ubah_pengguna_get(page, request):
 def ubah_pengguna_post(page, request):
     return {
         'title': page._title,
-        'action': request.route_url('ubah_pengguna', uid=user.uid)
+        'action': request.route_url('ubah_pengguna', uid=page.user.uid)
     }
 
 
@@ -148,7 +148,8 @@ def profile_get(page, request):
     profile = user.profile
     if profile:
         data = mapper_alchemy(page.profile, profile)
-
+    log.info(user.username)
+    log.info(profile)
     return {
         'title': page._title,
         'action': request.route_url('profile_page', uid=user.uid),
@@ -160,16 +161,19 @@ def profile_get(page, request):
 def profile_post(page, request):
     s = request.db
 
-    profile = page.profile
+    user = s.query(page.user).filter_by(
+        uid=request.matchdict.get('uid')).first()
+
+    profile = page.profile()
     profile.display_name = ' Surya Kencana Bond'
     profile.first_name = 'Surya'
     profile.last_name = 'Kencana'
     profile.description = 'Hahahahaha'
-    profile.user_id = request.matchdict.get('uid')
-
+    profile.user = user
+    log.info(request.matchdict.get('uid'))
     s.add(profile)
     return { 'title': page._title }
 
 
 def includeme(config):
-    config.scan()
+    pass

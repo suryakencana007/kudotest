@@ -14,22 +14,20 @@ options = {
     'secret_key': '',
     'env': ENV
 }
-app = Baka(__name__, **options)
 
 # untuk config env baka-tenshi
-app.config_schema(armor)
-app.config_schema(tenshi)
+Baka.include_schema(armor)
+Baka.include_schema(tenshi)
+
+app = Baka(__name__, config_schema=True, **options)
 
 app.include('baka_tenshi')
 app.include('baka_armor')
 
 # modular aplikasi
-app.include('.users')
+app.include('CircleApp.users')
 
 @app.route('/', renderer='CircleApp:templates/index.html')
 def HomePage(request):
     log.info('ok')
     return { 'Baka': 'Hello World'}
-
-
-app.scan()

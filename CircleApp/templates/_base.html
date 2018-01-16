@@ -6,7 +6,7 @@ html lang="${request.locale_name}"
     meta charset="utf-8"
     title
       == "Circle App"
-      == self.title()
+      == self.page_title()
 
     meta name="viewport" content="width=device-width"
     meta name="description" content=""
@@ -47,5 +47,5 @@ html lang="${request.locale_name}"
 
     -block js
 
--def title()
+-def page_title()
   = ''

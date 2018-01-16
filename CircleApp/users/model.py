@@ -35,6 +35,8 @@ class Pengguna(Model):
 
     password_updated = DB.Column('kunci_ubah_pengguna', DB.DateTime(), nullable=True)
 
+    profile = DB.relationship('Profile', uselist=False, back_populates="user")
+
     def __init__(self):
         self.uid = util.guid()
 
@@ -48,7 +50,7 @@ class Pengguna(Model):
 
     @hybrid_property
     def password(self):
-        return  self._password
+        return self._password
 
     @password.setter
     def password(self, value):
@@ -89,7 +91,7 @@ class Profile(Model):
     description = DB.Column('keterangan', DB.Text())
 
     user_id = DB.Column(DB.Integer, DB.ForeignKey(Pengguna.id))
-    user = DB.relationship(Pengguna, backref=DB.backref('profile', uselist=False))
+    user = DB.relationship(Pengguna, back_populates='profile')
 
     def __init__(self):
         self.uid = util.guid()
