@@ -1,0 +1,36 @@
+-inherit file="CircleApp:templates/_base.html"
+
+-def page_title()
+  ${title or ''}
+
+
+<%self.widgets:panel>
+    .form-login
+        img src="/static/img/mark-zi.png"
+        h2.red.title
+        span ${u'Login Pengguna'}
+        ${baka.ui.tags.form(
+            action or request.url,
+            class_="_ajax %s" % ('readonly' if readonly else ''),
+            autocomplete="off")}
+
+            <%self.widgets:textfield name="email_or_username" label="${u'Email atau Akun Pengguna'}" placeholder="${u'Email atau akun pengguna anda'}" />
+            <%self.widgets:textfield name="password" label="${u'Kata Sandi'}" placeholder="${u'Kata Kunci'}" />
+
+        ${baka.ui.tags.submit('login', u'Masuk', class_="btn btn-primary") if not readonly else ''}
+        ${baka.ui.tags.link_to(u'Lupa Kunci', '/', class_="btn") if not readonly else ''}
+        ${baka.ui.tags.end_form()}
+</%self.widgets:panel>
+
+
+-block css
+    style type="text/css"
+        .form-login {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .form-login img {
+            width: 50%;
+            margin: 0 25%;
+        }

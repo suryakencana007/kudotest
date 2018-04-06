@@ -1,6 +1,7 @@
 version: '3'
 services:
   web:
+    image: circle-app:20180404519
     build: .
     ports:
       - "5078:5000"

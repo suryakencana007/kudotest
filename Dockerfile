@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8
+FROM node:8-alpine
 
 ENV DATABASE_URL="sqlite:///circleapp.db"
 

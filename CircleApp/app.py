@@ -15,14 +15,14 @@ options = {
     'env': ENV
 }
 
-# untuk config env baka-tenshi
-Baka.include_schema(armor)
-Baka.include_schema(tenshi)
+app = Baka(__name__, **options)
 
-app = Baka(__name__, config_schema=True, **options)
-
+app.config.add_config_validator(tenshi.merge(armor))
 app.include('baka_tenshi')
 app.include('baka_armor')
+
+
+
 
 # modular aplikasi
 app.include('CircleApp.users')
